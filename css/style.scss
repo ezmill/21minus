@@ -1,0 +1,19 @@
+@import 'jeet/index.scss';
+
+@include edit();
+
+section,h1 {
+
+	@include center(960px);
+
+}
+
+nav {
+	@include col(1/4);
+}
+
+section div {
+
+	@include col(3/4);
+
+}

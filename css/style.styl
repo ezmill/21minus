@@ -1,0 +1,42 @@
+@import 'jeet'
+@import url("http://fonts.googleapis.com/css?family=Old+Standard+TT:400italic, 700")
+@import url("http://fonts.googleapis.com/css?family=Lato:100,300,400,700");
+//edit()
+slate = #4f4f4f
+
+body
+	font-family "lato"
+	font-weight 100
+	color slate
+	height 100%
+
+
+h1 
+	font-weight 100
+	font-size 60px
+
+h3
+	font-weight 400
+	padding 10px
+	margin-top -40px
+
+
+nav
+	font-family "old standard tt" 
+	font-style italic 
+	font-weight 700
+	span(1/6)
+	height
+	background url("img/navBg.gif")
+	a
+		display block
+		padding 10px
+		color slate
+		text-decoration: none;
+
+
+div 
+	height: 450px 
+	span(5/6)
+	+below(600px)
+		color: red

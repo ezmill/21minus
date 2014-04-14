@@ -1,0 +1,74 @@
+@import url("http://fonts.googleapis.com/css?family=Old+Standard+TT:400italic, 700");
+@import url("http://fonts.googleapis.com/css?family=Lato:100,300,400,700");
+body {
+  font-family: "lato";
+  font-weight: 100;
+  color: #4f4f4f;
+  height: 100%;
+}
+h1 {
+  font-weight: 100;
+  font-size: 60px;
+}
+h3 {
+  font-weight: 400;
+  padding: 10px;
+  margin-top: -40px;
+}
+nav {
+  font-family: "old standard tt";
+  font-style: italic;
+  font-weight: 700;
+  *zoom: 1;
+  float: left;
+  display: inline;
+  clear: none;
+  padding-left: 0;
+  padding-right: 0;
+  text-align: inherit;
+  width: 16.6666666666667%;
+  margin-left: 0%;
+  margin-right: 0%;
+height
+  background: url("img/navBg.gif");
+}
+nav:before,
+nav:after {
+  content: '';
+  display: table;
+}
+nav:after {
+  clear: both;
+}
+nav a {
+  display: block;
+  padding: 10px;
+  color: #4f4f4f;
+  text-decoration: none;
+}
+div {
+  height: 450px;
+  *zoom: 1;
+  float: left;
+  display: inline;
+  clear: none;
+  padding-left: 0;
+  padding-right: 0;
+  text-align: inherit;
+  width: 83.3333333333333%;
+  margin-left: 0%;
+  margin-right: 0%;
+}
+div:before,
+div:after {
+  content: '';
+  display: table;
+}
+div:after {
+  clear: both;
+}
+@media only screen and (max-width: 600px) {
+  div {
+    color: #f00;
+  }
+}
