@@ -72,3 +72,15 @@ div:after {
     color: #f00;
   }
 }
+div #container canvas {
+  width: 100%;
+}
+footer {
+  font-family: "old standard tt";
+  font-style: italic;
+  position: absolute;
+  bottom: 25px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
