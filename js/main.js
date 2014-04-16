@@ -7,6 +7,8 @@ $('#pwys').click(function(e){
 		
 	});
 });
+
+
 var fov = 70;
 var canvasWidth = 320 / 2;
 var canvasHeight = 240 /2;
