@@ -7,6 +7,14 @@ $('#pwys').click(function(e){
 		
 	});
 });
+
+$('#bbSort').click(function(e){
+	e.preventDefault();
+	//	$.get("bbSort.html",function(data){
+		$.getScript("js/bbSort.js")
+		//$("#bbSortCanvas").appendTo("body");
+		
+});
 var fov = 70;
 var canvasWidth = 320 / 2;
 var canvasHeight = 240 /2;
