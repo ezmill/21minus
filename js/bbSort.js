@@ -41,12 +41,14 @@ var cosOff = map_range(cos, -1, 1, 0, 255);
           var red=pixel;
           var green=pixel+1;
           var blue=pixel+2;
+          var alpha=pixel+3;
+
           var col = new THREE.Color(getCol(x, y));
           var brightness = getBri(col);
            // if ( y === 2) console.log(brightness);
           if(brightness < 0.6){
             //swap(copyData,red,red-4*w-4,green,green-4*w-4,blue,blue-4*w-4);
-            swap(copyData,red,red+4,green,green+4,blue,blue+4);
+            swap(copyData,red,red+4,green,green+4,blue,blue+4, alpha, alpha+4);
 
               }
            }
@@ -59,16 +61,19 @@ var cosOff = map_range(cos, -1, 1, 0, 255);
   };
   
 
-function swap(x,rl,rr,gl,gr,bl,br){
+function swap(x,rl,rr,gl,gr,bl,br,al,ar){
   var tempr=x[rl];
   x[rl]=x[rr];
-  x[rr]=tempr-cosOff;
+  x[rr]=tempr;
   var tempg=x[gl];
   x[gl]=x[gr];
-  x[gr]=tempg-cosOff;
+  x[gr]=tempg;
   var tempb=x[bl];
   x[bl]=x[br];
-  x[br]=tempb-cosOff;
+  x[br]=tempb;
+  var tempa=x[al];
+  x[al]=x[ar];
+  x[ar]=tempa;
 }
 
 function getCol(x, y) {

@@ -6,6 +6,16 @@ body {
   color: #4f4f4f;
   height: 100%;
 }
+@media only screen and (max-width: 900px) {
+  body {
+    font-size: 110%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  body {
+    font-size: 150%;
+  }
+}
 h1 {
   font-weight: 100;
   font-size: 60px;
