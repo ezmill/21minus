@@ -1,7 +1,7 @@
 @import url("http://fonts.googleapis.com/css?family=Old+Standard+TT:400italic, 700");
 @import url("http://fonts.googleapis.com/css?family=Lato:100,300,400,700");
 body {
-  font-family: "lato";
+  font-family: "lato", sans-serif;
   font-weight: 100;
   color: #4f4f4f;
   height: 100%;
@@ -20,62 +20,57 @@ h1 {
   font-weight: 100;
   font-size: 60px;
 }
-h3 {
+span {
   font-weight: 400;
-  padding: 10px;
-  margin-top: -40px;
+  margin-top: -20px;
+}
+#linkContainer {
+  float: right;
+  z-index: 0;
 }
 nav {
-  font-family: "old standard tt";
+  font-family: "old standard tt", serif;
   font-style: italic;
   font-weight: 700;
-  *zoom: 1;
-  float: left;
-  display: inline;
-  clear: none;
-  padding-left: 0;
-  padding-right: 0;
-  text-align: inherit;
-  width: 16.6666666666667%;
-  margin-left: 0%;
-  margin-right: 0%;
-height
+  float: right;
   background: url("img/navBg.gif");
 }
-nav:before,
-nav:after {
-  content: '';
-  display: table;
-}
-nav:after {
-  clear: both;
-}
 nav a {
-  display: block;
-  padding: 10px;
-  color: #4f4f4f;
+  padding-left: 10;
+  padding-right: 10;
+  padding-top: 5;
+  padding-bottom: 5;
+  margin: 0;
+  display: inline;
+  color: #fff;
   text-decoration: none;
 }
+nav a:nth-child(1) {
+  background: #4f4f4f;
+}
+nav a:nth-child(2) {
+  background: #606060;
+}
+nav a:nth-child(3) {
+  background: #727272;
+}
+nav a:nth-child(4) {
+  background: #838383;
+}
+nav a:nth-child(5) {
+  background: #959595;
+}
+a:hover {
+  padding-top: 10px;
+}
+.active {
+  top: px;
+  padding-top: 15px;
+}
 div {
+  z-index: 1;
   height: 450px;
-  *zoom: 1;
-  float: left;
-  display: inline;
-  clear: none;
-  padding-left: 0;
-  padding-right: 0;
-  text-align: inherit;
-  width: 83.3333333333333%;
-  margin-left: 0%;
-  margin-right: 0%;
-}
-div:before,
-div:after {
-  content: '';
-  display: table;
-}
-div:after {
-  clear: both;
+  background: #4f4f4f;
 }
 @media only screen and (max-width: 600px) {
   div {

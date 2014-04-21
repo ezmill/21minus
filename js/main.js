@@ -14,3 +14,17 @@ $('#bbSort').click(function(e){
 		//$("#bbSortCanvas").appendTo("body");
 		
 });
+
+$('#lewitt').click(function(e){
+	e.preventDefault();
+	$.get("lewitt.html",function(data){
+		$.getScript("js/lewitt.js")
+		$( "div" ).html( data );
+		
+	});
+});
+
+$("nav a").click(function(){
+	$("a").removeClass("active");
+	$(this).addClass("active");
+})

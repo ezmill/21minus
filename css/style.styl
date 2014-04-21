@@ -5,7 +5,7 @@
 slate = #4f4f4f
 
 body
-	font-family "lato"
+	font-family "lato", sans-serif
 	font-weight 100
 	color slate
 	height 100%
@@ -21,34 +21,67 @@ h1
 	font-size 60px
 	//+below(600px)
 		
-h3
+span
 	font-weight 400
-	padding 10px
-	margin-top -40px
+	//padding 10px
+	margin-top -20px
 
+#linkContainer
+	float right
+	z-index 0
 
 
 nav
-	font-family "old standard tt" 
+	font-family "old standard tt", serif
 	font-style italic 
 	font-weight 700
-	span(1/6)
-	height
+
+	//top -10px
+	//display inline
+	// stack()
+	// clear right
+	float: right
 	background url("img/navBg.gif")
 	a
-		display block
-		padding 10px
-		color slate
+		
+		padding-left 10
+		padding-right 10
+		padding-top 5 
+		padding-bottom 5
+		// padding 0
+		margin 0
+		// stack()
+		display inline
+		//background tint(slate, 55%)
+		color #FFFFFF
 		text-decoration: none;
-
+	a:nth-child(1)
+		background tint(slate, 0%)
+	a:nth-child(2)
+		background tint(slate, 10%)
+	a:nth-child(3)
+		background tint(slate, 20%)
+	a:nth-child(4)
+		background tint(slate, 30%)
+	a:nth-child(5)
+		background tint(slate, 40%)
+	
+	
+a:hover
+	padding-top 10px
+.active
+	top px
+	padding-top 15px
 
 div 
+	z-index 1
 	height: 450px 
-	span(5/6)
+	//span(5/6)
 	+below(600px)
 		color: red
 	#container canvas
 		width:100%;
+	background slate
 
 footer
 	font-family "old standard tt" 

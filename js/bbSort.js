@@ -8,11 +8,12 @@ var cosOff = map_range(cos, -1, 1, 0, 255);
   canvas=document.createElement('canvas');
   document.querySelector("div").appendChild(canvas);
   canvas.id = "bbSortCanvas"
-   canvas.width=400;
-   canvas.height=400;
+
   scale = 1;
   img = new Image();
   img.src = "img/plant1.jpg";
+     canvas.width=img.width;
+   canvas.height=img.height;
   // height = img.height * scale;
   // width = img.width * scale;
 
@@ -47,10 +48,10 @@ var cosOff = map_range(cos, -1, 1, 0, 255);
           var brightness = getBri(col);
            // if ( y === 2) console.log(brightness);
           if(brightness < 0.6){
-            //swap(copyData,red,red-4*w-4,green,green-4*w-4,blue,blue-4*w-4);
+            // swap(copyData,red,red-4*w-4,green,green-4*w-4,blue,blue-4*w-4);
             swap(copyData,red,red+4,green,green+4,blue,blue+4, alpha, alpha+4);
 
-              }
+             }
            }
         }
         ctx.putImageData(copy,0,0);

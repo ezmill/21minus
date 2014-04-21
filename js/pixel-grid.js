@@ -23,6 +23,8 @@ var wireMaterial;
 var meshMaterial;
 var container, prompt;
 var params;
+var reds = [], greens = [], blues = [], colors = [];
+var controls;
 
 function detectSpecs(){
 	container = document.querySelector('#container');
@@ -59,13 +61,16 @@ function init() {
 	};
 
  	params = new WCMParams();
-
 	scene = new THREE.Scene();
 	camera = new THREE.PerspectiveCamera(fov, window.innerWidth / window.innerHeight, 1, 5000);
 	camera.target = new THREE.Vector3(0, 0, 0);
+
+	
+
 	scene.add(camera);
 	camera.position.z = 600;
-
+    controls = new THREE.OrbitControls(camera);
+	controls.addEventListener('change ', animate);
 	video = document.createElement('video');
 	video.width = vidWidth;
 	video.height = vidHeight;
@@ -93,29 +98,50 @@ function init() {
 
 	// //add mirror plane
 		geometry = new THREE.PlaneGeometry(640, 480, canvasWidth, canvasHeight);
+		//geometry = new THREE.TorusKnotGeometry();
 		geometry.dynamic = true;
 	// geometry = new THREE.Geometry();
-	// for ( var x = 0; x < canvasWidth; x ++ ) {
-	// 	for( var y = 0; y < canvasHeight; y++){
-
-	// 	var vertex = new THREE.Vector3();
-	// 	vertex.x = x;
-	// 	vertex.y = y;
-	// 	vertex.z =
-        
-	// 	geometry.vertices.push( vertex );
-	// 	}
-	// }
-
+		// for(var i = 0; i < geometry.vertices.length; i++){
+		// 	//colorArrayer();		
+		// 	colors[ i ] = new THREE.Color( 0xFFFFFF);
+		// }
+		// geometry.colors = colors;
 	// meshMaterial = new THREE.MeshBasicMaterial({
 	// 	opacity: 1,
 	// 	map: videoTexture
 	// });
+// 	for ( i = 0; i < 20000; i ++ ) {
+
+// 					var vertex = new THREE.Vector3();
+// 					vertex.x = 2000 * Math.random() - 1000;
+// 					vertex.y = 2000 * Math.random() - 1000;
+// 					vertex.z = 2000 * Math.random() - 1000;
+
+// 					geometry.vertices.push( vertex );
+// 					for (var x = 0; x < canvasWidth; x++){
+// 						for var y = 0; y < canvasHeight; y++){
+// 					colors[ i ] = new THREE.Color( getCol(x,y) );
+// 					colors[ i ].setHSL( ( vertex.x + 1000 ) / 2000, 1, 0.5 );
+// 						}
+// 					}
+// 				}
+// geometry.colors = colors;
+	
 	var particleMaterial = new THREE.ParticleSystemMaterial({
-		map: videoTexture,
-		size: 100.0
+	    map: videoTexture,
+	    //vertexColors: true,
+	    //color: 0xbada55,
+		size: 4.0
 	});
+	// var torusMaterial = new THREE.MeshBasicMaterial({
+	//     map: videoTexture
+	//     //vertexColors: true,
+	//     //color: 0xbada55,
+	// 	//size: 10.0
+	// });
+	//material.color.setHSL( 1.0, 0.2, 0.7 );
 	var mirror = new THREE.ParticleSystem(geometry, particleMaterial);
+	// var mirror = new THREE.Mesh(geometry, torusMaterial);
 	world3D.add(mirror);
 
 
@@ -152,7 +178,8 @@ function init() {
 	}, false);
 
 	onResize();
-
+	//colorArrayer();
+	console.log(geometry.vertices.length)
 	animate();
 
 }
@@ -210,7 +237,7 @@ function animate() {
 }
 
 function render() {
-	world3D.scale = new THREE.Vector3(params.zoom*4, params.zoom*4, 1);
+	world3D.scale = new THREE.Vector3(params.zoom, params.zoom, 1);
 	world3D.rotation.x += ((mouseY * tiltAmount) - world3D.rotation.x) * tiltSpeed;
 	world3D.rotation.y += ((mouseX * tiltAmount) - world3D.rotation.y) * tiltSpeed;
 	//camera.lookAt(camera.target);
@@ -254,6 +281,31 @@ function onWheel(event) {
 	//update gui slider
 	gui.__controllers[0].updateDisplay();
 }
+
+function colorArrayer(){
+	var w=canvas.width,
+		h=canvas.height;
+	var input=ctx.getImageData(0,0,w,h);
+    var inputData=input.data;
+    for(var y=0;y<h;y++){
+          for(var x=0;x<w;x++){
+          var pixel=(y*w+x)*4;
+          var red=pixel;
+          var green=pixel+1;
+          var blue=pixel+2;
+          reds.push(red);
+          greens.push(green);
+          blues.push(blue);
+      }
+  }
+}
+// function setVtxCol(){
+// 	for (var i = 0; i < canvasWidth + 1; i++) {
+// 			var loc = j*(canvasWidth+1)+i
+// 			var color = new THREE.Color(getColor(i, j));
+			
+// 			geometry.vertices[loc].vertexColors[loc] = color;
+// }
 
 
 //start the show
