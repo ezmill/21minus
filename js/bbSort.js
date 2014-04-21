@@ -12,8 +12,8 @@ var cosOff = map_range(cos, -1, 1, 0, 255);
   scale = 1;
   img = new Image();
   img.src = "img/plant1.jpg";
-     canvas.width=img.width;
-   canvas.height=img.height;
+     canvas.width=400;
+   canvas.height=400;
   // height = img.height * scale;
   // width = img.width * scale;
 
