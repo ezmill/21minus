@@ -4,7 +4,7 @@ var canvas = document.getElementById('myCanvas');
 var context = canvas.getContext('2d');
 canvas.width = 700;
 canvas.height = 400;
-
+var hammertime = new Hammer(canvas);
 //context.beginPath();
 context.rect(0, 0, canvas.width, canvas.height);
 context.fillStyle = 'black';
@@ -209,10 +209,14 @@ function CanvasState(canvas) {
   //fixes a problem where double clicking causes text to get selected on the canvas
   canvas.addEventListener('selectstart', function(e) { e.preventDefault(); return false; }, false);
   // Up, down, and move are for dragging
-  canvas.addEventListener('mousedown', function(e) {
-    var mouse = myState.getMouse(e);
-    var mx = mouse.x;
-    var my = mouse.y;
+  // canvas.addEventListener("mousedown", function(e){
+  hammertime.on('tap', function(e) {
+    // alert("tapped");
+    // var mouse = myState.getMouse(e);
+    // console.log(mouse);
+    var mx = e.gesture.touches[0].clientX;
+    var my = e.gesture.touches[0].clientY;
+    console.log(mx+","+my);
     var shapes = myState.shapes;
     var l = shapes.length;
     for (var i = l-1; i >= 0; i--) {
@@ -235,17 +239,20 @@ function CanvasState(canvas) {
       myState.valid = false; // Need to clear the old selection border
     }
   }, true);
-  canvas.addEventListener('mousemove', function(e) {
+  hammertime.on('drag', function(e) {
     if (myState.dragging){
       var mouse = myState.getMouse(e);
       // We don't want to drag the object by its top-left corner, we want to drag it
       // from where we clicked. Thats why we saved the offset and use it here
 //       var newX = mouse.x - myState.dragoffx;
 //       var newY = mouse.y - myState.dragoffy;
-      var newX = Math.round((mouse.x - myState.dragoffx) / offs) * offs;
-      var newY = Math.round((mouse.y - myState.dragoffy) / offs) * offs;
+      var mx = e.gesture.touches[0].clientX;
+      var my = e.gesture.touches[0].clientY;
+      var newX = Math.round((mx - myState.dragoffx) / offs) * offs;
+      var newY = Math.round((my - myState.dragoffy) / offs) * offs;
       myState.selection.x = newX;
       myState.selection.y = newY;
+      console.log(newX, newY)
       switch(myState.selection.num){
         case "one":
          myState.selection.startingPosX = newX;
