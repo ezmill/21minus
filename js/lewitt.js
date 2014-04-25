@@ -215,6 +215,7 @@ function CanvasState(canvas) {
     // alert("tapped");
     // var mouse = myState.getMouse(e);
     // console.log(mouse);
+    e.gesture.preventDefault();
     var mx = e.gesture.touches[0].clientX;
     var my = e.gesture.touches[0].clientY;
     // console.log(mx+","+my);
@@ -241,6 +242,8 @@ function CanvasState(canvas) {
     }
   }, true);
   hammertime.on('drag', function(e) {
+        e.gesture.preventDefault();
+
     if (myState.dragging){
       var mouse = myState.getMouse(e);
       // We don't want to drag the object by its top-left corner, we want to drag it
@@ -326,6 +329,8 @@ function CanvasState(canvas) {
     }
   }, true);
   canvas.addEventListener('dragend', function(e) {
+        e.gesture.preventDefault();
+
     myState.dragging = false;
   }, true);
   // double click for making new shapes
