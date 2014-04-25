@@ -2,8 +2,9 @@
 var canvas = document.getElementById('myCanvas');
 
 var context = canvas.getContext('2d');
-canvas.width = 700;
-canvas.height = 400;
+context.canvas.width  = window.innerWidth;
+context.canvas.height = window.innerHeight;
+console.log(canvas.width, canvas.height);
 var hammertime = new Hammer(canvas);
 //context.beginPath();
 context.rect(0, 0, canvas.width, canvas.height);
