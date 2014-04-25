@@ -210,13 +210,13 @@ function CanvasState(canvas) {
   canvas.addEventListener('selectstart', function(e) { e.preventDefault(); return false; }, false);
   // Up, down, and move are for dragging
   // canvas.addEventListener("mousedown", function(e){
-  hammertime.on('tap', function(e) {
+  hammertime.on('dragstart', function(e) {
     // alert("tapped");
     // var mouse = myState.getMouse(e);
     // console.log(mouse);
     var mx = e.gesture.touches[0].clientX;
     var my = e.gesture.touches[0].clientY;
-    console.log(mx+","+my);
+    // console.log(mx+","+my);
     var shapes = myState.shapes;
     var l = shapes.length;
     for (var i = l-1; i >= 0; i--) {
@@ -324,7 +324,7 @@ function CanvasState(canvas) {
       myState.valid = false; // Something's dragging so we must redraw
     }
   }, true);
-  canvas.addEventListener('mouseup', function(e) {
+  canvas.addEventListener('dragend', function(e) {
     myState.dragging = false;
   }, true);
   // double click for making new shapes
